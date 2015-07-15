@@ -1,0 +1,21 @@
+// Colors
+// ======
+//
+// Credits to the awesome @damien_m for the idea.
+
+$base-color-palette: (
+  'dark' : #1e1e1e,
+  'white': #fff
+);
+
+$_tint-percentage: 20% !default;
+
+@function color($name, $scale: 0) {
+  $_color-val: map-get($base-color-palette, $name);
+
+  @if $scale < 0 {
+    @return darken($_color-val, abs($scale) * $_tint-percentage);
+  } @else {
+    @return lighten($_color-val, $scale * $_tint-percentage);
+  }
+}

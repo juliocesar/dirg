@@ -1,0 +1,14 @@
+// Body styles
+// ===========
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+
+  @include breakpoint(small) {
+    background: color('rouge');
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

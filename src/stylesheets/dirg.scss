@@ -1,0 +1,64 @@
+// Dirg
+// ====
+
+// Display scales
+$displays: (
+  default: (
+    font-size: 14px,
+    unit: 14px * 1.5,
+    scale: 1.2
+  )
+);
+
+// A power calculation function. See:
+// http://sassmeister.com/gist/10620fefd1ed75189f1b
+@function pow($x, $y) {
+  $ret: 1;
+
+  @if $y > 0 {
+    @for $i from 1 through $y {
+      $ret: $ret * $x;
+    }
+  }
+
+  @else {
+    @for $i from $y to 0 {
+      $ret: $ret / $x;
+    }
+  }
+
+  @return $ret;
+}
+
+// Returns a value to be used in `font-size`.
+@function font-scale($x, $size: 'default') {
+  $display: map-get($displays, $size);
+  $scale: map-get($display, 'scale');
+  $font-size: map-get($display, 'font-size');
+  @return round($font-size * pow($scale, $x));
+}
+
+// Returns a grid unit of space, calculated from the scale above.
+@function units($x, $size: 'default') {
+  $display: map-get($displays, $size);
+  @return round(map-get($display, 'unit') * $x);
+}
+
+// Shortcut for adding multiple units and institute columns thinking.
+@function columns($x, $size: 'default') {
+  @return units(4, $size) * $x;
+}
+
+// A helper for setting an appropriate font size and line-height for it.
+@mixin font-size($units, $size: 'default') {
+  $display: map-get($displays, $size);
+  $unit: map-get($display, 'unit');
+  $lh: $unit;
+
+  @while $lh < font-scale($units, $size) {
+    $lh: $lh + $unit;
+  }
+
+  font-size: font-scale($units, $size);
+  line-height: $lh;
+}
