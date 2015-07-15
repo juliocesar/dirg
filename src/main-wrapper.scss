@@ -4,4 +4,17 @@
 .main-wrapper {
   margin: columns(1) auto 0;
   width: columns(7);
+  text-align: center;
+
+  .main-heading {
+    @include font-size(5);
+  }
+
+  .sub-heading {
+    @include font-size(2);
+  }
+
+  .article:first-of-type {
+    margin-top: units(2);
+  }
 }
