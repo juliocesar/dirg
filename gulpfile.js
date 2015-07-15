@@ -25,7 +25,7 @@ var handleErrors = function(err) {
 var sass = require('gulp-ruby-sass');
 
 gulp.task('sass', function() {
-  return sass(Config.srcDir + '/stylesheets/index.scss')
+  return sass(Config.srcDir + '/index.scss')
     .on('error', handleErrors)
     .pipe(gulp.dest(Config.publicDir + '/'))
 });
@@ -35,9 +35,9 @@ gulp.task('sass', function() {
 var prefix = require('gulp-autoprefixer');
 
 gulp.task('autoprefixer', ['sass'], function() {
-  return gulp.src(Config.publicDir + '/stylesheets/index.css')
+  return gulp.src(Config.publicDir + '/index.css')
     .pipe(prefix("last 1 version", "ie 10"))
-    .pipe(gulp.dest(Config.publicDir + '/stylesheets/'))
+    .pipe(gulp.dest(Config.publicDir + '/'))
 });
 
 // Server.
@@ -72,7 +72,7 @@ gulp.task('deploy', shell.task([
 
 // Watch.
 gulp.task('watch', function() {
-  gulp.watch(Config.srcDir + '/stylesheets/**', ['autoprefixer']);
+  gulp.watch(Config.srcDir + '/**', ['autoprefixer']);
 });
 // ---
 
