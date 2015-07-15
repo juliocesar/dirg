@@ -12,12 +12,8 @@ var Config = {
   publicDir:  path.resolve('./public')
 };
 
-// Fires error notifications via gulp-notify.
-var notify = require('gulp-notify');
-
 var handleErrors = function(err) {
-  notify(err.message);
-
+  console.log(err)
   this.emit('end');
 };
 
@@ -27,7 +23,7 @@ var sass = require('gulp-ruby-sass');
 gulp.task('sass', function() {
   return sass(Config.srcDir + '/index.scss')
     .on('error', handleErrors)
-    .pipe(gulp.dest(Config.publicDir + '/'))
+    .pipe(gulp.dest(Config.publicDir))
 });
 // ---
 
@@ -37,7 +33,7 @@ var prefix = require('gulp-autoprefixer');
 gulp.task('autoprefixer', ['sass'], function() {
   return gulp.src(Config.publicDir + '/index.css')
     .pipe(prefix("last 1 version", "ie 10"))
-    .pipe(gulp.dest(Config.publicDir + '/'))
+    .pipe(gulp.dest(Config.publicDir))
 });
 
 // Server.
