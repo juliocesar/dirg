@@ -1,12 +1,17 @@
 // Dirg
 // ====
 
-// Display scales
-$displays: (
+// Scales
+$dirg-scales: (
   default: (
     font-size: 14px,
     unit: 14px * 1.5,
     scale: 1.2
+  ),
+  mobile: (
+    font-size: 12px,
+    unit: 12px * 1.35,
+    scale: 1.25
   )
 );
 
@@ -32,7 +37,7 @@ $displays: (
 
 // Returns a value to be used in `font-size`.
 @function font-scale($x, $size: 'default') {
-  $display: map-get($displays, $size);
+  $display: map-get($dirg-scales, $size);
   $scale: map-get($display, 'scale');
   $font-size: map-get($display, 'font-size');
   @return round($font-size * pow($scale, $x));
@@ -40,7 +45,7 @@ $displays: (
 
 // Returns a grid unit of space, calculated from the scale above.
 @function units($x, $size: 'default') {
-  $display: map-get($displays, $size);
+  $display: map-get($dirg-scales, $size);
   @return round(map-get($display, 'unit') * $x);
 }
 
@@ -51,7 +56,7 @@ $displays: (
 
 // A helper for setting an appropriate font size and line-height for it.
 @mixin font-size($units, $size: 'default') {
-  $display: map-get($displays, $size);
+  $display: map-get($dirg-scales, $size);
   $unit: map-get($display, 'unit');
   $lh: $unit;
 
