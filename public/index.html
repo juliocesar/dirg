@@ -7,7 +7,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-    <link rel="stylesheet" href="index.css">
+    <link
+      href="http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu+Condensed"
+      rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
   </head>
   <body>
     <main class="main-wrapper">
@@ -18,10 +21,10 @@
         A minimal grid library
       </h2>
       <article class="article">
-        <h1>
+        <h1 class="heading">
           The gist
         </h1>
-        <ol>
+        <ol class="ordered-list">
           <li>Download dirg (and possibly breakpoint).</li>
           <li>Put dirg somewhere in your build where whatever uses it has
           access to the functions and mixin it makes available.</li>
@@ -29,23 +32,23 @@
         </ol>
       </article>
       <article class="article">
-        <h1>
+        <h1 class="heading">
           Scales whirlwind tour
         </h1>
-        <p>
+        <p class="paragraph">
           A scale has a base font size value, a unit size that’s always equal or
           larger than it, and a variance factor.
         </p>
-        <p>
+        <p class="paragraph">
           The cente of the scale is <code>0</code>. You can move to
           <code>1</code> or greater or <code>-1</code> or lesser on the scale.
           The smaller the variance factor of the scale, the more fine grained
           variations you’ll get.
         </p>
-        <p>
+        <p class="paragraph">
           The <code>default</code> scale in dirg is looks like this:
         </p>
-        <p>
+        <p class="paragraph">
           <code>
             <pre>
               $dirg-scales: (
@@ -60,10 +63,10 @@
         </p>
         <p>
           You can tweak that, or add further entries for smaller/larger screens,
-          for instance. <strong>You should never mix two scales</strong>,
-          however.
+          for instance. <strong class="strong">You should never mix two
+          scales</strong>,however.
         </p>
-      <p>
+      <p class="paragraph">
         <code>
           <pre>
             $dirg-scales: (
@@ -81,13 +84,13 @@
           </pre>
         </code>
       </p>
-      <p>
+      <p class="paragraph">
         This is where the <a href="">breakpoint</a> mixin becomes useful.
         When you apply a different scale to sizing, it’s always because a change
         of resolution occurred (since different size screens have different
         sizing needs):
       </p>
-      <p>
+      <p class="paragraph">
         <pre>
           <code>
             .a-component {
@@ -105,10 +108,10 @@
       </p>
       </article>
       <article class="article">
-        <h1>
+        <h1 class="heading">
           API
         </h1>
-        <p>
+        <p class="paragraph">
           <code>font-scale($x, [$scale = default])</code>: Returns a value to
           be used on a `font-size`.
           <pre>
@@ -127,7 +130,7 @@
             </code>
           </pre>
         </p>
-        <p>
+        <p class="paragraph">
           <code>units($x, [$scale = default])</code>: Returns the value for
           <code>x</code>units of the grid. Use this for sizing things:
           <pre>
@@ -138,7 +141,7 @@
             </code>
           </pre>
         </p>
-        <p>
+        <p class="paragraph">
           <code>columns($x, [$scale = default])</code>: Returns a column, which
           is the equivalent of <code>units(4)</code>. This is really just a
           shortcut, but it tends to make discussions sane by avoiding too high
@@ -162,7 +165,7 @@
             </code>
           </pre>
         </p>
-        <p>
+        <p class="paragraph">
           <code>@include font-size($x, [$scale = default])</code>: A mixin for
           making setting font sizes with a grid-valid line height value that can
           accommodate it.
@@ -176,40 +179,40 @@
             </code>
           </pre>
         </p>
-        <p>
+        <p class="paragraph">
           Most elements/components are sized vertically by the amount of text
           and/or other elements in them. This ensures they will grow in grid
           steps, and thus, correctly.
         </p>
       </article>
       <article class="article">
-        <h1>The long story</h1>
-        <p>
+        <h1 class="heading">The long story</h1>
+        <p class="paragraph">
           Designs that don’t use a grid
           <strong>are fundamentally broken</strong>. Using a grid, however,
           in the majority of cases is painful because silly bears insist on
           making whole frameworks out of it. Learning the grid system itself
           becomes a science. That’s nuts.
         </p>
-        <p>
+        <p class="paragraph">
           Rhythm and proportion are fundamental principles of UI building. These
           need to be orderly and based on a scale, which determines how things
           like text can grow or shrink.
         </p>
-        <p>
+        <p class="paragraph">
           One side benefit to having a scale is, because the factor is
           predictable (i.e.: you know text going from <code>0</code> on
           to <code>1</code> on the scale needs to grow by <code>x%</code>), you
           can export this factor to CSS transforms and animate proportionally.
         </p>
-        <p>
+        <p class="paragraph">
           For instance, it’s a known fact you can’t performantly animate
           <code>font-size</code>. But you can use a <code>scale()</code>
           transform just fine. The problem then becomes knowing by exactly how
           much you can grow/shrink things with that transform so that it moves
           to a direction within the scale.
         </p>
-        <p>
+        <p class="paragraph">
           Take the case below:
         </p>
         <p>
@@ -220,15 +223,15 @@
         </p>
       </article>
       <article class="article">
-        <h1>
+        <h1 class="heading">
           Author, source, and license
         </h1>
-        <p>
+        <p class="paragraph">
           Made with the fury of a thousand suns by
           <a href="https://twitter.com/julio_ody">@julio_ody</a>. Source
           <a href="https://github.com/juliocesar/dirg">on GitHub</a>.
         </p>
-        <p>
+        <p class="paragraph">
           <a href="https://en.wikipedia.org/wiki/MIT_License">MIT licensed</a>.
         </p>
       </article>
