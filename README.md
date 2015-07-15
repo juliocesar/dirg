@@ -22,7 +22,7 @@ You can also add further entries to the map, and use that in conjunction with
         unit: 14px * 1.5,
         scale: 1.2
       ),
-      mobile: (
+      small: (
         font-size: 12px,
         unit: 12px * 1.35,
         scale: 1.25
@@ -35,12 +35,12 @@ You can also add further entries to the map, and use that in conjunction with
 
       @include breakpoint(small) {
         .paragraph {
-          @include font-size(0, mobile);
+          @include font-size(0, small);
         }
       }
     }
 
-The above will load the `mobile` scale which uses different sizings, ideally
+The above will load the `small` scale which uses different sizings, ideally
 more adequate for small displays.
 
 Values in the scale aren’t restricted to pixels. You can run a scale based on
