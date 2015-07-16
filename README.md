@@ -11,7 +11,7 @@ for what can be done just as aptly with one and a couple of functions.
 
 1) Get the standalone library
 [here](https://raw.githubusercontent.com/juliocesar/dirg/master/src/dirg.scss). Optionally get
-[breakpoint](https://github.com/juliocesar/dirg/blob/master/src/breakpoint.scss)
+[breakpoint](https://raw.githubusercontent.com/juliocesar/dirg/master/src/breakpoint.scss)
 along.
 
 2) Put both somewhere where your build can access the functions.
