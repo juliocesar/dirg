@@ -6,7 +6,7 @@ $dirg-scales: (
   default: (
     font-size: 14px,
     unit: 14px * 1.5,
-    scale: 1.35
+    factor: 1.35
   )
 );
 
@@ -32,22 +32,22 @@ $dirg-scales: (
 
 // Returns a value to be used in `font-size`.
 @function font-scale($x, $size: 'default') {
-  $display: map-get($dirg-scales, $size);
-  $scale: map-get($display, 'scale');
-  $font-size: map-get($display, 'font-size');
-  @return round($font-size * pow($scale, $x));
+  $scale: map-get($dirg-scales, $size);
+  $factor: map-get($scale, 'factor');
+  $font-size: map-get($scale, 'font-size');
+  @return round($font-size * pow($factor, $x));
 }
 
-@function factor($x, $size: 'default') {
-  $display: map-get($dirg-scales, $size);
-  $scale: map-get($display, 'scale');
-  @return pow($scale, $x);
+// Returns the diff between two values in a growth/shrink factor.
+@function factor-diff($args...) {
+  $arguments: keywords($args);
+  @return map-get($arguments, to) / map-get($arguments, from);
 }
 
 // Returns a grid unit of space, calculated from the scale above.
 @function units($x, $size: 'default') {
-  $display: map-get($dirg-scales, $size);
-  @return round(map-get($display, 'unit') * $x);
+  $scale: map-get($dirg-scales, $size);
+  @return round(map-get($scale, 'unit') * $x);
 }
 
 // Shortcut for adding multiple units and institute columns thinking.
@@ -57,8 +57,8 @@ $dirg-scales: (
 
 // A helper for setting an appropriate font size and line-height for it.
 @mixin font-size($units, $size: 'default') {
-  $display: map-get($dirg-scales, $size);
-  $unit: map-get($display, 'unit');
+  $scale: map-get($dirg-scales, $size);
+  $unit: map-get($scale, 'unit');
   $lh: $unit;
 
   @while $lh < font-scale($units, $size) {
