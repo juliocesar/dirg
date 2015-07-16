@@ -90,8 +90,7 @@ For the record, you should’t ever set a `font-size` without a `line-height`, b
     }
 
 ---
-`columns($x, [$scale = default])`: Returns a column, which
-is the equivalent of <code>units(4)</code>. This is really just a shortcut, but it tends to make discussions sane by avoiding too high values passed to <code>units()</code> that are harder to reason about.
+`columns($x, [$scale = default])`: Returns a column, which is the equivalent of <code>units(4)</code>. This is really just a shortcut, but it tends to make discussions sane by avoiding too high values passed to <code>units()</code> that are harder to reason about.
 
     .main-wrapper {
       width: columns(8);
@@ -105,6 +104,29 @@ is the equivalent of <code>units(4)</code>. This is really just a shortcut, but 
     // And elsewhere
     .main-wrapper .content-wrapper {
       width: columns(6);
+    }
+
+---
+`factor-diff($from: x, $to: y):` Returns the factor difference between two sizes. That’s handy when you want to transform, say, one font-size to the next using `transform`.
+
+    .label {
+      display: inline-block;
+      transform-origin: left;
+      vertical-align: bottom;
+    }
+
+    .label.label-a {
+      @include font-size(5);
+    }
+
+    .label.label-b {
+      transition: transform 1s ease-out;
+      line-height: units(5);
+      font-size: font-scale(1);
+
+      &:hover {
+        transform: scale(factor-diff($from: font-scale(1), $to: font-scale(5)));
+      }
     }
 
 ---
