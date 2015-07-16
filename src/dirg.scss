@@ -38,6 +38,12 @@ $dirg-scales: (
   @return round($font-size * pow($scale, $x));
 }
 
+@function factor($x, $size: 'default') {
+  $display: map-get($dirg-scales, $size);
+  $scale: map-get($display, 'scale');
+  @return pow($scale, $x);
+}
+
 // Returns a grid unit of space, calculated from the scale above.
 @function units($x, $size: 'default') {
   $display: map-get($dirg-scales, $size);
