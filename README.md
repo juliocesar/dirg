@@ -116,18 +116,22 @@ For the record, you should’t ever set a `font-size` without a `line-height`, b
     }
 
     .label.label-a {
-      @include font-size(5);
+      @include font-size(3);
     }
 
     .label.label-b {
       transition: transform 1s ease-out;
-      line-height: units(5);
+      line-height: units(2);
       font-size: font-scale(1);
 
       &:hover {
-        transform: scale(factor-diff($from: font-scale(1), $to: font-scale(5)));
+        transform: scale(factor-diff($from: font-scale(1), $to: font-scale(3)));
       }
     }
+
+Like so:
+
+![diff grow](https://raw.githubusercontent.com/juliocesar/dirg/master/diff-grow.gif)
 
 ---
 `@include font-size($x, [$scale = default])`: A mixin for
@@ -149,7 +153,7 @@ Rhythm and proportion are fundamental principles of UI building. These need to b
 
 A scale has a base font size value, a unit size that’s always equal or larger than it, and a variance factor.
 
-The cente of the scale is `0`. You can move to `1` or greater or `-1` or lesser on the scale. The smaller the variance factor of the scale, the more fine grained variations you’ll get.
+The centre of the scale is `0`. You can move to `1` or greater or `-1` or lesser on the scale. The smaller the variance factor of the scale, the more fine grained variations you’ll get.
 
 # License
 
