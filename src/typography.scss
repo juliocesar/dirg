@@ -1,17 +1,15 @@
 // Typography settings
 // ===================
 
-$regular-text-font: 'freight-display-pro', serif;
-$heading-font: 'fira-sans-2', sans-serif;
 
 body {
-  font-family: $regular-text-font;
-  font-weight: 300;
+  font-family: 'fira-sans-2', sans-serif;
+  font-weight: 600;
 }
 
 h1,
 h2 {
-  font-family: $heading-font;
+  font-weight: 400;
 }
 
 code {
