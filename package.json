@@ -1,10 +1,23 @@
 {
-  "devDependencies": {
-    "gulp-autoprefixer": "2.3.1",
-    "gulp-ruby-sass": "1.0.5",
-    "gulp-shell": "0.4.2",
-    "finalhandler": "^0.4.0",
-    "serve-static": "^1.10.0"
-    "gulp": "~3.9.0"
-  }
+  "name": "dirg",
+  "version": "0.0.1",
+  "description": "A minimal grid library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliocesar/dirg.git"
+  },
+  "keywords": [
+    "css",
+    "grid"
+  ],
+  "author": "Julio Cesar Ody",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juliocesar/dirg/issues"
+  },
+  "homepage": "https://github.com/juliocesar/dirg#readme"
 }
