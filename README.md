@@ -16,6 +16,48 @@ along.
 
 2) Put both somewhere where your build can access the functions.
 
+### Webpack install
+
+Install dirg:
+
+```
+npm install https://github.com/juliocesar/dirg --save # will be on npm soon
+```
+
+Require dirg in your `webpack.config.js`:
+
+```
+var dirg = require('dirg').includePaths;
+```
+
+And add it to your sass loader include path:
+
+```
+{
+  test: /\.scss$/,
+  loader: 'style!css!sass?includePaths[]=' + dirg
+}
+```
+
+Then in sass you can:
+
+```
+@import 'dirg';
+```
+
+All dirg functions are available after this. E.g.
+
+```
+.stuff {
+  @include breakpoint(default) {
+    h1 {
+      color: blue;
+      @include font-size(0, default);
+    }
+  }
+}
+```
+
 ### Quick usage
 
 Update the `$displays` variable at the top of the file with settings appropriate
