@@ -1,17 +1,14 @@
 # dirg
 
-dirg is a grid library with minimal surface, for helping you use *correct* sizes
-for both units and text based on a scale.
+dirg is a grid library with minimal surface, for helping you use *correct* sizes for both units and text based on a scale.
 
 This is, in many ways, an implementation of
-[Gridlover](http://www.gridlover.net/), but without providing a billion mixins
-for what can be done just as aptly with one and a couple of functions.
+[Gridlover](http://www.gridlover.net/), but without providing a billion mixins for what can be done just as aptly with one and a couple of functions.
 
 ### Download and install
 
 1) Get the standalone library
-[here](https://raw.githubusercontent.com/juliocesar/dirg/master/src/dirg.scss). Optionally get
-[breakpoint](https://raw.githubusercontent.com/juliocesar/dirg/master/src/breakpoint.scss)
+[here](https://raw.githubusercontent.com/juliocesar/dirg/master/src/dirg.scss). Optionally get [breakpoint](https://raw.githubusercontent.com/juliocesar/dirg/master/src/dirg-breakpoint.scss)
 along.
 
 2) Put both somewhere where your build can access the functions.
@@ -21,7 +18,7 @@ along.
 Install dirg:
 
 ```
-npm install https://github.com/juliocesar/dirg --save # will be on npm soon
+npm install https://github.com/juliocesar/dirg --save # Will be on npm soon.
 ```
 
 Require dirg in your `webpack.config.js`:
@@ -64,7 +61,7 @@ Update the `$displays` variable at the top of the file with settings appropriate
 for the design you’re implementing. I recommend using Gridlover for obtaining
 these values, and then copying them over.
 
-You can also add further entries to the map, and use that in conjunction with `breakpoint.scss`, like so:
+You can also add further entries to the map, and use that in conjunction with `dirg-breakpoint.scss`, like so:
 
     $dirg-scales: (
       default: (
