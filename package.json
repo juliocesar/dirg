@@ -2,7 +2,7 @@
   "name": "dirg",
   "version": "0.0.1",
   "description": "A minimal grid library",
-  "main": "index.js",
+  "main": "src/dirg.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "css",
-    "grid"
+    "grid",
+    "javascript"
   ],
   "author": "Julio Cesar Ody",
   "license": "MIT",
