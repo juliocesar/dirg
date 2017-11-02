@@ -2,21 +2,10 @@
 // =======
 
 (function() {
-  var scales = {
-    default: {
-      fontSize: '14px',
-      gridUnit: '21px',
-      factor: 1.35
-    }
-  }
-
-  var resolveScale = function(name, localScales) {
-    var scale = (localScales || scales)[name || 'default']
-    if (!scale) {
-      throw new Error('Scale not found: ' + name)
-    }
-
-    return scale
+  var defaultScale = {
+    fontSize: '13px',
+    gridUnit: '18px',
+    factor: 1.3
   }
 
   var numberFromValue = function(value) {
@@ -27,41 +16,46 @@
     return value.match(/([a-z]+$)/)[0]
   }
 
-  var fontScale = function(x, scaleName, localScales) {
-    var sizeScale = resolveScale(scaleName, localScales)
+  var fontScale = function(x, scale) {
+    var sizeScale = scale || defaultScale
     var number = numberFromValue(sizeScale.fontSize)
     var sizingUnit = sizingUnitFromValue(sizeScale.fontSize)
 
     return Math.ceil(number * Math.pow(sizeScale.factor, x)) + sizingUnit
   }
 
-  var units = function(x, scaleName, localScales) {
-    var sizeScale = resolveScale(scaleName, localScales)
+  var units = function(x, scale) {
+    var sizeScale = scale || defaultScale
     var number = numberFromValue(sizeScale.gridUnit)
     var unit = sizingUnitFromValue(sizeScale.gridUnit)
 
     return Math.ceil(number * x) + unit
   }
 
-  var columns = function(x, scaleName, localScales) {
-    return units(4, scaleName, localScales)
+  var columns = function(x, scale) {
+    return units(4 * x, scale)
   }
 
-  var fontSize = function(x, scaleName, localScales) {
-    var sizeScale = resolveScale(scaleName, localScales)
+  var fontSize = function(x, scale) {
+    var sizeScale = scale || defaultScale
     var lineHeight = numberFromValue(sizeScale.gridUnit)
     var lineHeightUnit = sizingUnitFromValue(sizeScale.gridUnit)
-    var fontSize = fontScale(x, scaleName, localScales)
+    var fontSize = fontScale(x, scale)
     var fontSizeNumber = numberFromValue(fontSize)
 
     while (lineHeight < fontSizeNumber) {
       lineHeight += numberFromValue(sizeScale.gridUnit)
     }
 
+    return { fontSize: fontSize, gridUnit: lineHeight + lineHeightUnit }
+  }
+
+  var fontSizeCss = function(x, scale) {
+    const output = fontSize(x, scale)
     return [
-      'font-size: ' + fontSize,
-      'line-height: ' + lineHeight + lineHeightUnit
-    ].join("; ")
+      'font-size: ' + output.fontSize,
+      'line-height: ' + output.gridUnit
+    ].join(';')
   }
 
   var dirg = {
@@ -74,6 +68,6 @@
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = dirg
   } else {
-    window.dirg = dig
+    window.dirg = dirg
   }
 })()
